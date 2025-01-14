@@ -1,11 +1,28 @@
 import {StyleSheet, Text, View} from "react-native";
-import {Link} from 'expo-router'
+import MapView, {PROVIDER_GOOGLE} from "react-native-maps";
+import {useState} from "react";
+
+
+const initialRegion = {
+    latitude: 54.683835,
+    longitude: 25.279269,
+    latitudeDelta: 0.162178,
+    longitudeDelta: 0.141252,
+}
+type Region = typeof initialRegion;
 
 export default function Index() {
+
+    const [region, setRegion] = useState<Region>(initialRegion)
+
+    const onRegionChange = (region: Region) => {
+        setRegion(region);
+    }
+
     return (
         <View style={styles.container}>
-            <Text>Home Screen</Text>
-            <Link href="/favourites" style={styles.button}>Go to Favourites</Link>
+            <MapView style={styles.map} provider={PROVIDER_GOOGLE} region={region} onRegionChange={onRegionChange}
+                     showsMyLocationButton/>
         </View>
     );
 }
@@ -13,11 +30,9 @@ export default function Index() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
     },
-    button: {
-        fontSize: 20,
-        textDecorationLine: 'underline',
-    },
+    map: {
+        width: '100%',
+        height: '100%',
+    }
 })
