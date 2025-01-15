@@ -1,5 +1,5 @@
-import {StyleSheet, Text, View} from "react-native";
-import MapView, {PROVIDER_GOOGLE} from "react-native-maps";
+import {StyleSheet, View} from "react-native";
+import MapView, {PROVIDER_DEFAULT} from "react-native-maps";
 import {useState} from "react";
 
 
@@ -21,7 +21,7 @@ export default function Index() {
 
     return (
         <View style={styles.container}>
-            <MapView style={styles.map} provider={PROVIDER_GOOGLE} region={region} onRegionChange={onRegionChange}
+            <MapView style={styles.map} provider={PROVIDER_DEFAULT} region={region} onRegionChange={onRegionChange}
                      showsMyLocationButton/>
         </View>
     );

@@ -1,7 +1,5 @@
-import { Tabs } from 'expo-router';
-
+import {Tabs} from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
-
 
 export default function TabLayout() {
     return (
@@ -22,8 +20,8 @@ export default function TabLayout() {
                 name="index"
                 options={{
                     title: 'Map',
-                    tabBarIcon: ({ color, focused }) => (
-                        <Ionicons name={focused ? 'map-sharp' : 'map-outline'} color={color} size={24} />
+                    tabBarIcon: ({color, focused}) => (
+                        <Ionicons name={focused ? 'map-sharp' : 'map-outline'} color={color} size={24}/>
                     ),
                     headerShown: false
                 }}
@@ -32,7 +30,7 @@ export default function TabLayout() {
                 name="favourites"
                 options={{
                     title: 'Favourites',
-                    tabBarIcon: ({ color, focused }) => (
+                    tabBarIcon: ({color, focused}) => (
                         <Ionicons name={focused ? 'heart' : 'heart-outline'} color={color} size={24}/>
                     ),
                 }}
