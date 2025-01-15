@@ -19,7 +19,7 @@ const mockData: Playground[] = [
     }
 ]
 
-type Playground = {
+export type Playground = {
     id: number,
     coordinates: { latitude: number, longitude: number },
     status: 'open' | 'closed'
