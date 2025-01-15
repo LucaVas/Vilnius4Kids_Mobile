@@ -1,6 +1,6 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-type AvailableIconNames = 'map-sharp' | 'map-outline' | 'heart-sharp' | 'heart-outline' | 'menu-sharp' |  'menu-outline';
+type AvailableIconNames = 'map-sharp' | 'map-outline' | 'heart-sharp' | 'heart-outline' | 'menu-sharp' | 'menu-outline';
 
 type Props = {
     color: string,
@@ -8,7 +8,7 @@ type Props = {
 }
 
 export default function TabIcon({color, name}: Props) {
-    return(
+    return (
         <Ionicons name={name} color={color} size={24}/>
     );
 }
