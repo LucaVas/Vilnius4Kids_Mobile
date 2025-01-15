@@ -1,0 +1,6 @@
+appId: 'com.lucav.client'
+# appId: host.exp.Exponent // for expo go
+---
+- launchApp
+- tapOn: "More"
+- assertVisible: "More screen"
