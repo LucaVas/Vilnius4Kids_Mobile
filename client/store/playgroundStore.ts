@@ -2,6 +2,7 @@ import {create} from 'zustand'
 
 const mockData: Playground[] = [
     {
+        id: 1,
         coordinates: {
             latitude: 54.683835,
             longitude: 25.279269,
@@ -9,15 +10,17 @@ const mockData: Playground[] = [
         status: 'open'
     },
     {
+        id: 2,
         coordinates: {
-            latitude: 54.683860,
-            longitude: 25.279222,
+            latitude: 54.680000,
+            longitude: 25.270000,
         },
         status: 'closed'
     }
 ]
 
 type Playground = {
+    id: number,
     coordinates: { latitude: number, longitude: number },
     status: 'open' | 'closed'
 }

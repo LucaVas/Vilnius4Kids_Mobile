@@ -1,5 +1,5 @@
 import {StyleSheet, View} from "react-native";
-import MapView, {PROVIDER_DEFAULT} from "react-native-maps";
+import MapView, {Marker, PROVIDER_DEFAULT} from "react-native-maps";
 import {useState} from "react";
 import {usePlaygroundStore} from "@/store/playgroundStore";
 
@@ -24,7 +24,16 @@ export default function Index() {
     return (
         <View style={styles.container}>
             <MapView style={styles.map} provider={PROVIDER_DEFAULT} region={region} onRegionChange={onRegionChange}
-                     showsMyLocationButton/>
+                     showsMyLocationButton>
+                {playgrounds.map(playground => (
+                    <Marker
+                        key={playground.id}
+                        coordinate={playground.coordinates}
+                        title={playground.id.toString()}
+                    />
+                ))}
+
+            </MapView>
         </View>
     );
 }
