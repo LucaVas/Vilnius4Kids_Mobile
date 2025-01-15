@@ -1,6 +1,7 @@
 import {StyleSheet, View} from "react-native";
 import MapView, {PROVIDER_DEFAULT} from "react-native-maps";
 import {useState} from "react";
+import {usePlaygroundStore} from "@/store/playgroundStore";
 
 
 const initialRegion = {
@@ -13,6 +14,7 @@ type Region = typeof initialRegion;
 
 export default function Index() {
 
+    const playgrounds = usePlaygroundStore((state) => state.playgrounds);
     const [region, setRegion] = useState<Region>(initialRegion)
 
     const onRegionChange = (region: Region) => {
