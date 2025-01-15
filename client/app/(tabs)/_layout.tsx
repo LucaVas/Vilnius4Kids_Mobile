@@ -31,7 +31,16 @@ export default function TabLayout() {
                 options={{
                     title: 'Favourites',
                     tabBarIcon: ({color, focused}) => (
-                        <Ionicons name={focused ? 'heart' : 'heart-outline'} color={color} size={24}/>
+                        <Ionicons name={focused ? 'heart-sharp' : 'heart-outline'} color={color} size={24}/>
+                    ),
+                }}
+            />
+            <Tabs.Screen
+                name="more"
+                options={{
+                    title: 'More',
+                    tabBarIcon: ({color, focused}) => (
+                        <Ionicons name={focused ? 'menu-sharp' : 'menu-outline'} color={color} size={24}/>
                     ),
                 }}
             />
