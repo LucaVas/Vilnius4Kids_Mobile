@@ -9,7 +9,7 @@ export default function PlaygroundMarker({playground}: Props) {
     return (
         <Marker
             key={playground.id}
-            coordinate={playground.coordinates}
+            coordinate={playground.coordinate}
             title={playground.id.toString()}
         />
     )
