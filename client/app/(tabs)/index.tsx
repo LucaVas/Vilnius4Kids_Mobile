@@ -18,14 +18,19 @@ export default function Index() {
     const playgrounds = usePlaygroundStore((state) => state.playgrounds);
     const [region, setRegion] = useState<Region>(initialRegion)
 
-    const onRegionChange = (region: Region) => {
-        setRegion(region);
-    }
-
     return (
         <View style={styles.container}>
-            <MapView style={styles.map} provider={PROVIDER_DEFAULT} region={region} onRegionChange={onRegionChange}
-                     showsMyLocationButton>
+            <MapView
+                style={styles.map}
+                mapType="terrain"
+                provider={PROVIDER_DEFAULT}
+                region={region}
+                showsMyLocationButton
+                showsUserLocation
+                zoomControlEnabled
+                zoomEnabled
+                zoomTapEnabled
+            >
                 {playgrounds.map(playground => (
                     <PlaygroundMarker key={playground.id} playground={playground}/>
                 ))}
