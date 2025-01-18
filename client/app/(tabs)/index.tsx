@@ -18,6 +18,10 @@ export default function Index() {
     const playgrounds = usePlaygroundStore((state) => state.playgrounds);
     const [region, setRegion] = useState<Region>(initialRegion)
 
+    const onPlaygroundSelect = () => {
+        console.log("Playground select");
+    }
+
     return (
         <View style={styles.container}>
             <MapView
@@ -32,7 +36,10 @@ export default function Index() {
                 zoomTapEnabled
             >
                 {playgrounds.map(playground => (
-                    <PlaygroundMarker key={playground.id} playground={playground}/>
+                    <PlaygroundMarker
+                        key={playground.id}
+                        playground={playground}
+                        onPress={onPlaygroundSelect}/>
                 ))}
 
             </MapView>
