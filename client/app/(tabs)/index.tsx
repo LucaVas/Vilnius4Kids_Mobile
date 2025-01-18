@@ -1,7 +1,7 @@
 import {StyleSheet, View} from "react-native";
 import MapView, {PROVIDER_DEFAULT} from "react-native-maps";
-import {useState} from "react";
-import {usePlaygroundStore} from "@/store/playgroundStore";
+import {useRef, useState} from "react";
+import {Playground, usePlaygroundStore} from "@/store/playgroundStore";
 import PlaygroundMarker from "@/components/map/PlaygroundMarker";
 
 
@@ -17,14 +17,26 @@ export default function Index() {
 
     const playgrounds = usePlaygroundStore((state) => state.playgrounds);
     const [region, setRegion] = useState<Region>(initialRegion)
+    const mapViewRef = useRef<MapView>(null);
+
+    const onPlaygroundSelect = (playground: Playground) => {
+        const newRegion = {
+            ...region,
+            latitude: playground.coordinate.latitude,
+            longitude: playground.coordinate.longitude,
+        };
+        mapViewRef.current?.animateToRegion(newRegion, 700);
+    }
 
     return (
         <View style={styles.container}>
             <MapView
+                ref={mapViewRef}
                 style={styles.map}
                 mapType="terrain"
                 provider={PROVIDER_DEFAULT}
                 region={region}
+                onRegionChangeComplete={region => setRegion(region)}
                 showsMyLocationButton
                 showsUserLocation
                 zoomControlEnabled
@@ -32,7 +44,10 @@ export default function Index() {
                 zoomTapEnabled
             >
                 {playgrounds.map(playground => (
-                    <PlaygroundMarker key={playground.id} playground={playground}/>
+                    <PlaygroundMarker
+                        key={playground.id}
+                        playground={playground}
+                        onPress={() => onPlaygroundSelect(playground)}/>
                 ))}
 
             </MapView>
