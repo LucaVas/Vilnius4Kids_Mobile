@@ -1,7 +1,7 @@
 import {StyleSheet, View} from "react-native";
 import MapView, {PROVIDER_DEFAULT} from "react-native-maps";
 import {useState} from "react";
-import {usePlaygroundStore} from "@/store/playgroundStore";
+import {Playground, usePlaygroundStore} from "@/store/playgroundStore";
 import PlaygroundMarker from "@/components/map/PlaygroundMarker";
 
 
@@ -18,8 +18,8 @@ export default function Index() {
     const playgrounds = usePlaygroundStore((state) => state.playgrounds);
     const [region, setRegion] = useState<Region>(initialRegion)
 
-    const onPlaygroundSelect = () => {
-        console.log("Playground select");
+    const onPlaygroundSelect = (playground: Playground) => {
+        console.log("Playground select: " + playground.id);
     }
 
     return (
@@ -39,7 +39,7 @@ export default function Index() {
                     <PlaygroundMarker
                         key={playground.id}
                         playground={playground}
-                        onPress={onPlaygroundSelect}/>
+                        onPress={() => onPlaygroundSelect(playground)}/>
                 ))}
 
             </MapView>
